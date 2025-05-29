@@ -18,6 +18,8 @@ const Footer = () => {
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/nasa-media">NASA Media</Link></li>
           </ul>
         </div>
         <div className={styles.footerSection}>
@@ -43,6 +45,8 @@ const Footer = () => {
           <li><Link to="/about">About</Link></li>
           <li><Link to="/nasa-picture">Daily Photo</Link></li>
           <li><Link to="/favorites">Favorites</Link></li>
+          <li><Link to="/gallery">Gallery</Link></li>
+          <li><Link to="/nasa-media">NASA Media</Link></li>
         </ul>
       </div>
       <div className={styles.footerBottom}>
