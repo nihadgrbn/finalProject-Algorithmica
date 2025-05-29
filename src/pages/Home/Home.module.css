@@ -15,26 +15,26 @@
 .searchInput {
   width: 100%;
   max-width: 400px;
-  padding: 0.8rem 1rem;
   margin: 1.5rem auto;
-  border: 2px solid #ffb347;
+  padding: 0.7rem 1rem;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #23233b;
+  color: #fff;
   font-size: 1rem;
-  color: #23233b;
-  background-color: #ffe082;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .searchInput:focus {
-  border-color: #ffd580;
-  box-shadow: 0 4px 16px rgba(255, 179, 71, 0.2);
-  outline: none;
+  border-color: #ffb347;
+  box-shadow: 0 0 8px rgba(255, 179, 71, 0.3);
 }
 
 .searchInput::placeholder {
-  color: #23233b;
-  opacity: 0.8;
+  color: #aaa; 
+  font-style: italic; 
 }
 
 .grid {
@@ -99,6 +99,24 @@
   margin-top: 2rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+
+.sortSelect {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #23233b;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin: 0.5rem;
+}
+
+.sortSelect:focus {
+  border-color: #ffb347;
+  box-shadow: 0 0 8px rgba(255, 179, 71, 0.3);
 }
 
 @media (max-width: 600px) {

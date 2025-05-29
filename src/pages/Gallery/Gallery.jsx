@@ -7,6 +7,10 @@ const Gallery = () => {
     return savedGallery ? JSON.parse(savedGallery) : [];
   });
   const [modalImg, setModalImg] = useState(null);
+  const [searchName, setSearchName] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   const handleDelete = (index) => {
     const updatedGallery = gallery.filter((_, i) => i !== index);
@@ -14,14 +18,59 @@ const Gallery = () => {
     localStorage.setItem("nasaGallery", JSON.stringify(updatedGallery));
   };
 
+  const filteredGallery = gallery
+    .filter((item) => {
+      const matchesName = item.name.toLowerCase().includes(searchName.toLowerCase());
+      const matchesDate =
+        (!startDate || new Date(item.dateAdded) >= new Date(startDate)) &&
+        (!endDate || new Date(item.dateAdded) <= new Date(endDate));
+      return matchesName && matchesDate;
+    })
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+
   return (
     <div className={styles.galleryContainer}>
       <h2>My NASA Collection</h2>
-      {gallery.length === 0 ? (
-        <p>Your gallery is empty. Add photos from Mars Rover Photos!</p>
+      <div className={styles.filterSection}>
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+          className={styles.filterInput}
+        />
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+          className={styles.filterInput}
+        />
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+          className={styles.filterInput}
+        />
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className={styles.sortSelect}
+        >
+          <option value="asc">Sort A-Z</option>
+          <option value="desc">Sort Z-A</option>
+        </select>
+      </div>
+      {filteredGallery.length === 0 ? (
+        <p>No matching results found.</p>
       ) : (
         <div className={styles.galleryGrid}>
-          {gallery.map((item, index) => (
+          {filteredGallery.map((item, index) => (
             <div key={index} className={styles.galleryCard}>
               <img
                 src={item.imgSrc}

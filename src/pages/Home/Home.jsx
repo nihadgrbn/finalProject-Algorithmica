@@ -4,7 +4,9 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const [planets, setPlanets] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortCriteria, setSortCriteria] = useState("semimajorAxis"); 
+  const [sortOrder, setSortOrder] = useState("asc"); 
 
   useEffect(() => {
     fetch("https://api.le-systeme-solaire.net/rest/bodies/")
@@ -15,10 +17,21 @@ const Home = () => {
       })
       .catch((err) => console.error("error:", err));
   }, []);
-  
-  const filteredPlanets = planets.filter((planet) =>
-    planet.englishName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+
+  const filteredPlanets = planets
+    .filter((planet) =>
+      planet.englishName.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      const valueA = parseFloat(a[sortCriteria]) || 0; 
+      const valueB = parseFloat(b[sortCriteria]) || 0;
+
+      if (sortOrder === "asc") {
+        return valueA - valueB;
+      } else {
+        return valueB - valueA;
+      }
+    });
 
   return (
     <div className={styles.home}>
@@ -28,13 +41,32 @@ const Home = () => {
           Discover fascinating information about the planets in our solar system and search for your favorite!
         </p>
       </div>
-      <input
-        type="text"
-        placeholder="Search for a planet..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className={styles.searchInput}
-      />
+      <div className={styles.searchContainer}>
+        <input
+          type="text"
+          placeholder="Search for a planet (e.g., Mars, Jupiter)..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
+        <select
+          value={sortCriteria}
+          onChange={(e) => setSortCriteria(e.target.value)}
+          className={styles.sortSelect}
+        >
+          <option value="semimajorAxis">Orbital Radius</option>
+          <option value="gravity">Gravity</option>
+          <option value="sideralOrbit">Orbital Period</option>
+        </select>
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+          className={styles.sortSelect}
+        >
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
       <div className={styles.planetList}>
         {filteredPlanets.length > 0 ? (
           filteredPlanets.map((planet) => (
