@@ -16,6 +16,7 @@
   padding: 1rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   text-align: center;
+  overflow: hidden;
 }
 
 .galleryImage {
@@ -35,6 +36,16 @@
   font-size: 1.1rem;
   color: #ffe082;
   margin-bottom: 0.5rem;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.galleryCard:hover .galleryTitle {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
 }
 
 .deleteButton {

@@ -260,14 +260,25 @@
 .galleryInputWrapper {
   margin-top: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .galleryInput {
-  width: 80%;
+  width: 90%;
+  max-width: 400px;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.galleryInput:focus {
+  outline: none;
+  border-color: #4caf50;
 }
 
 .addToGalleryButton {
@@ -277,9 +288,45 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-size: 1rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .addToGalleryButton:hover {
   background: #45a049;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.galleryCard {
+  background: #23233b;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  overflow: hidden;
+}
+
+.galleryTitle {
+  font-size: 1.1rem;
+  color: #ffe082;
+  margin-bottom: 0.5rem;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.removeButton {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.removeButton:hover {
+  background: #ff6666;
 }
