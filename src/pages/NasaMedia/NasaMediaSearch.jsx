@@ -51,11 +51,14 @@ const NasaMediaSearch = () => {
     setVisibleCount(PAGE_SIZE);
     try {
       let url = `https://images-api.nasa.gov/search?q=${encodeURIComponent(searchTerm)}`;
-      if (type && type !== "all") url += `&media_type=${type}`;
       const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
       const data = await res.json();
       setResults(data.collection.items || []);
-    } catch {
+    } catch (error) {
+      console.error("API request failed:", error);
       setResults([]);
     }
     setLoading(false);
@@ -144,17 +147,28 @@ const NasaMediaSearch = () => {
         })}
       </div>
       {visibleCount < results.length && (
-        <button className={styles.showMoreBtn} onClick={handleShowMore}>
+        <button
+          className={styles.showMoreBtn}
+          onClick={handleShowMore}
+        >
           Show More
         </button>
       )}
       {modalItem && (
         <div className={styles.modal} onClick={() => setModalItem(null)}>
-          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
             <h3>{modalItem.data[0].title}</h3>
             <p>{modalItem.data[0].description}</p>
             {renderMedia(modalItem, true)}
-            <button className={styles.closeBtn} onClick={() => setModalItem(null)}>Close</button>
+            <button
+              className={styles.closeBtn}
+              onClick={() => setModalItem(null)}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}

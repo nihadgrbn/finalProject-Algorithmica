@@ -20,8 +20,8 @@ function MarsPhotos() {
   const [photos, setPhotos] = useState([]);
   const [modalImg, setModalImg] = useState(null);
   const [visibleCount, setVisibleCount] = useState(12);
-  const [galleryTitle, setGalleryTitle] = useState("");
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [galleryName, setGalleryName] = useState("");
+  const [galleryDescription, setGalleryDescription] = useState("");
 
   useEffect(() => {
     async function fetchPhotos() {
@@ -55,8 +55,8 @@ function MarsPhotos() {
   }
 
   const handleAddToGallery = () => {
-    if (!galleryTitle.trim()) {
-      console.error("Gallery title is empty");
+    if (!galleryName.trim() || !galleryDescription.trim()) {
+      console.error("Name and description cannot be empty");
       return;
     }
     if (!modalImg) {
@@ -65,14 +65,26 @@ function MarsPhotos() {
     }
 
     const savedGallery = JSON.parse(localStorage.getItem("nasaGallery")) || [];
-    const newPhoto = { imgSrc: modalImg, title: galleryTitle };
+    const isCopy = savedGallery.some(photo => photo.imgSrc === modalImg);
+    if (isCopy) {
+      console.error("Photo already exists in the gallery");
+      return;
+    }
+
+    const newPhoto = {
+      imgSrc: modalImg,
+      name: galleryName,
+      description: galleryDescription,
+      dateAdded: new Date().toISOString().slice(0, 10),
+    };
     const updatedGallery = [...savedGallery, newPhoto];
 
     localStorage.setItem("nasaGallery", JSON.stringify(updatedGallery));
     console.log("Photo added to gallery:", newPhoto);
 
-    setGalleryTitle("");
-    setSelectedPhoto(null);
+    setGalleryName("");
+    setGalleryDescription("");
+    setModalImg(null);
   };
 
   return (
@@ -89,7 +101,7 @@ function MarsPhotos() {
           onChange={e => setDate(e.target.value)}
           className={styles.dateInput}
         />
-        <label htmlFor="mars-end-date" className={styles.dateLabel} style={{marginTop: "0.7rem"}}>
+        <label htmlFor="mars-end-date" className={styles.dateLabel} style={{ marginTop: "0.7rem" }}>
           End Date (optional):
         </label>
         <input
@@ -121,34 +133,31 @@ function MarsPhotos() {
         ))}
       </div>
       {visibleCount < photos.length && (
-        <button
-          className={styles.button}
-          onClick={handleShowMore}
-        >
+        <button className={styles.button} onClick={handleShowMore}>
           Show More
         </button>
       )}
       {modalImg && (
-        <div className={styles.modal} onClick={() => setModalImg(null)}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()} 
-          >
+        <div className={styles.modal} onClick={handleModalClose}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <img src={modalImg} alt="Mars large" className={styles.modalImg} />
             <div className={styles.galleryInputWrapper}>
               <input
                 type="text"
-                placeholder="Enter a title for this photo"
-                value={galleryTitle}
-                onChange={(e) => setGalleryTitle(e.target.value)}
+                placeholder="Photo Name"
+                value={galleryName}
+                onChange={(e) => setGalleryName(e.target.value)}
                 className={styles.galleryInput}
+              />
+              <textarea
+                placeholder="Photo Description"
+                value={galleryDescription}
+                onChange={(e) => setGalleryDescription(e.target.value)}
+                className={styles.galleryTextarea}
               />
               <button
                 className={styles.addToGalleryButton}
-                onClick={() => {
-                  setSelectedPhoto(modalImg);
-                  handleAddToGallery();
-                }}
+                onClick={handleAddToGallery}
               >
                 Add to Gallery
               </button>

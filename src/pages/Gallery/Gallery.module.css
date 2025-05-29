@@ -17,6 +17,14 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   text-align: center;
   overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease; 
+}
+
+.galleryCard:hover {
+  transform: translateY(-4px); 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); 
 }
 
 .galleryImage {
@@ -24,12 +32,6 @@
   height: auto;
   border-radius: 8px;
   margin-bottom: 0.5rem;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.galleryImage:hover {
-  transform: scale(1.05);
 }
 
 .galleryTitle {
@@ -42,10 +44,19 @@
   max-width: 100%;
 }
 
-.galleryCard:hover .galleryTitle {
+.galleryDescription {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
   white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.galleryDate {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.5rem;
 }
 
 .deleteButton {

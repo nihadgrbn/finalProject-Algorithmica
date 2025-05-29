@@ -25,11 +25,13 @@ const Gallery = () => {
             <div key={index} className={styles.galleryCard}>
               <img
                 src={item.imgSrc}
-                alt={item.title}
+                alt={item.name}
                 className={styles.galleryImage}
                 onClick={() => setModalImg(item.imgSrc)}
               />
-              <h3 className={styles.galleryTitle}>{item.title}</h3>
+              <h3 className={styles.galleryTitle}>{item.name}</h3>
+              <p className={styles.galleryDescription}>{item.description}</p>
+              <p className={styles.galleryDate}>Added on: {item.dateAdded}</p>
               <button
                 className={styles.deleteButton}
                 onClick={() => handleDelete(index)}
