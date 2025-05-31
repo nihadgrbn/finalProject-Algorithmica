@@ -78,7 +78,7 @@ const ChatBox = () => {
                 key={idx}
                 className={msg.sender === "user" ? styles.userMessage : styles.botMessage}
               >
-                <strong>{msg.sender === "user" ? "You" : "Gemini"}:</strong> {msg.text}
+                <strong>{msg.sender === "user" ? "You" : "Assistant"}:</strong> {msg.text}
               </div>
             ))}
             {loading && <p className={styles.loadingMessage}>Loading...</p>}
