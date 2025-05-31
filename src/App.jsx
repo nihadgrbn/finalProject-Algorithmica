@@ -11,24 +11,28 @@ import NearEarthObjects from "./pages/NearEarthObject/NearEarthObjects";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Gallery from "./pages/Gallery/Gallery";
+import ChatBox from "./components/ChatBox";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="planet/:id" element={<PlanetDetail />} />
-        <Route path="favorites" element={<Favorites />} />
-        <Route path="nasa-picture" element={<NasaApod />} />
-        <Route path="mars-photos" element={<MarsPhotos />} />
-        <Route path="nasa-media" element={<NasaMediaSearch />} />
-        <Route path="neo" element={<NearEarthObjects />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Route>
-    </Routes>
+    <>
+      <ChatBox />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="planet/:id" element={<PlanetDetail />} />
+          <Route path="favorites" element={<Favorites />} />
+          <Route path="nasa-picture" element={<NasaApod />} />
+          <Route path="mars-photos" element={<MarsPhotos />} />
+          <Route path="nasa-media" element={<NasaMediaSearch />} />
+          <Route path="neo" element={<NearEarthObjects />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/gallery" element={<Gallery />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

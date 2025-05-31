@@ -61,7 +61,6 @@
   background: #1e1e2f;
   color: #fff;
   border-radius: 16px;
-  /* box-shadow: 0 6px 24px rgba(0,0,0,0.22); */
   padding: 2rem 1.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
   border: 2px solid transparent;
@@ -70,7 +69,6 @@
 
 .neoCard:hover {
   transform: translateY(-8px) scale(1.03);
-  /* box-shadow: 0 12px 32px rgba(0,0,0,0.28); */
   border-color: #ffb347;
 }
 

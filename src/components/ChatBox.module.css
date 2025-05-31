@@ -1,0 +1,118 @@
+.chatBox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.toggleButton {
+  background-color: #ffb347;
+  color: #23233b;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.5rem; 
+  font-size: 1.2rem; 
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.toggleButton:hover {
+  background-color: #ffd580;
+  transform: translateY(-3px);
+}
+
+.chatWindow {
+  background-color: #23233b;
+  color: #ffe082;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  width: 400px; 
+  max-height: 500px; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatHeader {
+  background-color: #ffb347;
+  color: #23233b;
+  padding: 1.5rem; 
+  font-size: 1.5rem; 
+  font-weight: 700;
+  text-align: center;
+}
+
+.chatMessages {
+  flex: 1;
+  padding: 1.5rem; 
+  overflow-y: auto;
+}
+
+.userMessage {
+  background-color: #ffd580;
+  color: #23233b;
+  padding: 0.8rem; 
+  border-radius: 8px;
+  margin-bottom: 0.8rem; 
+  text-align: right;
+}
+
+.botMessage {
+  background-color: #23233b;
+  color: #ffe082;
+  padding: 0.8rem; 
+  border-radius: 8px;
+  margin-bottom: 0.8rem; 
+  text-align: left;
+}
+
+.loadingMessage {
+  color: #ffe082;
+  font-style: italic;
+}
+
+.chatInputContainer {
+  display: flex;
+  padding: 1rem; 
+  border-top: 1px solid #ffb347;
+}
+
+.chatInput {
+  flex: 1;
+  padding: 0.8rem; 
+  border: none;
+  border-radius: 8px;
+  margin-right: 0.8rem; 
+  font-size: 1.2rem; 
+}
+
+.sendButton {
+  background-color: #ffb347;
+  color: #23233b;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem; 
+  font-size: 1.2rem; 
+  cursor: pointer;
+}
+
+.sendButton:hover {
+  background-color: #ffd580;
+}
+
+.clearButton {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px; 
+  padding: 0.5rem 1rem; 
+  font-size: 0.9rem; 
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.clearButton:hover {
+  background-color: #c0392b;
+}
