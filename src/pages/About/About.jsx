@@ -167,7 +167,7 @@ const AboutPage = () => {
               </div>
               <div className={styles.teamInfo}>
                 <h3 className={styles.teamName}>Nihad Qurbanli</h3>
-                <p className={styles.teamRole}>Full Stack Developer</p>
+                <p className={styles.teamRole}>Backend Stack Developer</p>
                 <div>
                   <a 
                     href="https://github.com/nihadgrbn" 
@@ -210,9 +210,7 @@ const AboutPage = () => {
             </a>
           </div>
           
-          <p className={styles.copyright}>
-            © {new Date().getFullYear()} Planetarium. All rights reserved. Made with ♥ and ☄️
-          </p>
+        
         </footer>
       </div>
     </div>
