@@ -1,3 +1,4 @@
+/* General ChatBox Styles */
 .chatBox {
   position: fixed;
   bottom: 20px;
@@ -10,8 +11,8 @@
   color: #23233b;
   border: none;
   border-radius: 8px;
-  padding: 1rem 1.5rem; 
-  font-size: 1.2rem; 
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
@@ -28,8 +29,8 @@
   color: #ffe082;
   border-radius: 12px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-  width: 400px; 
-  max-height: 500px; 
+  width: 400px;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -38,54 +39,31 @@
 .chatHeader {
   background-color: #ffb347;
   color: #23233b;
-  padding: 1.5rem; 
-  font-size: 1.5rem; 
+  padding: 1.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
 }
 
 .chatMessages {
   flex: 1;
-  padding: 1.5rem; 
+  padding: 1.5rem;
   overflow-y: auto;
-}
-
-.userMessage {
-  background-color: #ffd580;
-  color: #23233b;
-  padding: 0.8rem; 
-  border-radius: 8px;
-  margin-bottom: 0.8rem; 
-  text-align: right;
-}
-
-.botMessage {
-  background-color: #23233b;
-  color: #ffe082;
-  padding: 0.8rem; 
-  border-radius: 8px;
-  margin-bottom: 0.8rem; 
-  text-align: left;
-}
-
-.loadingMessage {
-  color: #ffe082;
-  font-style: italic;
 }
 
 .chatInputContainer {
   display: flex;
-  padding: 1rem; 
+  padding: 1rem;
   border-top: 1px solid #ffb347;
 }
 
 .chatInput {
   flex: 1;
-  padding: 0.8rem; 
+  padding: 0.8rem;
   border: none;
   border-radius: 8px;
-  margin-right: 0.8rem; 
-  font-size: 1.2rem; 
+  margin-right: 0.8rem;
+  font-size: 1.2rem;
 }
 
 .sendButton {
@@ -93,8 +71,8 @@
   color: #23233b;
   border: none;
   border-radius: 8px;
-  padding: 0.8rem 1.5rem; 
-  font-size: 1.2rem; 
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
@@ -106,13 +84,127 @@
   background-color: #e74c3c;
   color: #fff;
   border: none;
-  border-radius: 6px; 
-  padding: 0.5rem 1rem; 
-  font-size: 0.9rem; 
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   margin-left: 0.5rem;
 }
 
 .clearButton:hover {
   background-color: #c0392b;
+}
+
+
+/* Desktop (1366px and above) */
+@media (min-width: 1366px) {
+  .chatWindow {
+    width: 400px;
+    max-height: 500px;
+  }
+
+  .chatHeader {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .chatInput {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+  }
+
+  .sendButton {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* Tablet (768px to 1024px) */
+@media (max-width: 1024px) {
+  .chatWindow {
+    width: 85%;
+    max-height: 65%;
+    bottom: 10px;
+    right: 7.5%;
+  }
+
+  .chatHeader {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  .chatInput {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .sendButton {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Mobile (360px to 480px) */
+@media (max-width: 480px) {
+  .chatWindow {
+    width: 95%;
+    max-height: 60%;
+    bottom: 5px;
+    right: 2.5%;
+    border-radius: 8px;
+  }
+
+  .chatHeader {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .chatInput {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .sendButton {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .clearButton {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .chatWindow {
+    width: 100%;
+    max-height: 50%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  }
+
+  .chatHeader {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .chatMessages {
+    padding: 0.5rem;
+  }
+
+  .chatInput {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .sendButton {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .clearButton {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
 }
