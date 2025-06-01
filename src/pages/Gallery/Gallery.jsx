@@ -30,7 +30,8 @@ const Gallery = () => {
 
   const filteredGallery = gallery
     .filter((item) => {
-      const matchesName = item.name && item.name.toLowerCase().includes(searchName.toLowerCase());
+      if (!item || typeof item.name !== "string") return false;
+      const matchesName = item.name.toLowerCase().includes(searchName.toLowerCase());
       const matchesDate =
         (!startDate || new Date(item.dateAdded) >= new Date(startDate)) &&
         (!endDate || new Date(item.dateAdded) <= new Date(endDate));
