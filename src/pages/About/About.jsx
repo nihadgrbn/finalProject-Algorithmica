@@ -159,7 +159,7 @@ const AboutPage = () => {
           
           <div className={styles.teamGrid}>
             <div className={styles.teamCard}>
-              <div className={styles.avatar}>
+              <div className={styles.userImage}>
                 <img 
                   src="https://avatars.githubusercontent.com/u/67826218?v=4" 
                   alt="Nihad Qurbanli" 
@@ -167,7 +167,7 @@ const AboutPage = () => {
               </div>
               <div className={styles.teamInfo}>
                 <h3 className={styles.teamName}>Nihad Qurbanli</h3>
-                <p className={styles.teamRole}>Backend Stack Developer</p>
+                <p className={styles.teamRole}>Backend  Developer</p>
                 <div>
                   <a 
                     href="https://github.com/nihadgrbn" 

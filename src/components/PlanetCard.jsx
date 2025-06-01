@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./PlanetCard.module.css";
 import planetImages from "../assets/planetImages";
 
-const PlanetCard = ({ planet }) => {
+const PlanetCard = ({ planet, onFavoriteChange }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -22,6 +22,8 @@ const PlanetCard = ({ planet }) => {
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
     setIsFavorite(!isFavorite);
+
+    if (onFavoriteChange) onFavoriteChange(planet.id);
   };
 
   const imageKey = planet.englishName?.toLowerCase?.() || "earth";

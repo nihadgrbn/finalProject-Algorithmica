@@ -23,6 +23,13 @@ const Favorites = () => {
       .catch((err) => console.error("Error loading favorites:", err));
   }, []);
 
+  const handleRemove = (id) => {
+    const updatedFavorites = favoriteIds.filter((favId) => favId !== id);
+    setFavoriteIds(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setPlanets(planets.filter(planet => planet.id !== id));
+  };
+
   return (
     <div className={styles.favorites}>
       <h2>Your Favorite Planets</h2>
@@ -31,7 +38,11 @@ const Favorites = () => {
       ) : (
         <div className={styles.planetList}>
           {planets.map((planet) => (
-            <PlanetCard key={planet.id} planet={planet} />
+            <PlanetCard
+              key={planet.id}
+              planet={planet}
+              onFavoriteChange={handleRemove}
+            />
           ))}
         </div>
       )}

@@ -22,6 +22,7 @@ function MarsPhotos() {
   const [visibleCount, setVisibleCount] = useState(12);
   const [galleryName, setGalleryName] = useState("");
   const [galleryDescription, setGalleryDescription] = useState("");
+  const [galleryError, setGalleryError] = useState("");
 
   useEffect(() => {
     async function fetchPhotos() {
@@ -55,19 +56,20 @@ function MarsPhotos() {
   }
 
   const handleAddToGallery = () => {
+    setGalleryError("");
     if (!galleryName.trim() || !galleryDescription.trim()) {
-      console.error("Name and description cannot be empty");
+      setGalleryError("Name and description cannot be empty");
       return;
     }
     if (!modalImg) {
-      console.error("No image selected");
+      setGalleryError("No image selected");
       return;
     }
 
     const savedGallery = JSON.parse(localStorage.getItem("nasaGallery")) || [];
     const isCopy = savedGallery.some(photo => photo.imgSrc === modalImg);
     if (isCopy) {
-      console.error("Photo already exists in the gallery");
+      setGalleryError("This photo is already in your gallery");
       return;
     }
 
@@ -139,9 +141,10 @@ function MarsPhotos() {
       )}
       {modalImg && (
         <div className={styles.modal} onClick={handleModalClose}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
             <img src={modalImg} alt="Mars large" className={styles.modalImg} />
             <div className={styles.galleryInputWrapper}>
+              {galleryError && <p className={styles.errorText}>{galleryError}</p>}
               <input
                 type="text"
                 placeholder="Photo Name"

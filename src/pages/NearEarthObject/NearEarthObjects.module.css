@@ -4,7 +4,6 @@
   padding: 2.5rem 1rem 3rem 1rem;
   background: linear-gradient(120deg, #23233b 60%, #1a1a2e 100%);
   border-radius: 18px;
-  /* box-shadow: 0 8px 32px rgba(0,0,0,0.18); */
   min-height: 80vh;
   color: #fff;
 }
@@ -40,14 +39,12 @@
   background: #23233b;
   color: #fff;
   font-size: 1.1rem;
-  /* box-shadow: 0 2px 8px rgba(0,170,255,0.08); */
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .dateInput:focus {
   border-color: #ffb347;
-  /* box-shadow: 0 0 8px rgba(255,179,71,0.3); */
 }
 
 .neoGrid {
@@ -99,7 +96,6 @@
   border-radius: 8px;
   text-align: center;
   font-size: 1.1rem;
-  /* box-shadow: 0 2px 8px rgba(255,77,79,0.18); */
   margin-top: 1rem;
   display: flex;
   align-items: center;

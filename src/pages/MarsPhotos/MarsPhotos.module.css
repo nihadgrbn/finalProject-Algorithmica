@@ -341,3 +341,9 @@
 .removeButton:hover {
   background: #ff6666;
 }
+
+.errorText {
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}

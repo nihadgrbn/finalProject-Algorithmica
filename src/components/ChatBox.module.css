@@ -47,9 +47,11 @@
 .chatMessages {
   flex: 1;
   padding: 1rem;
-  overflow-y: auto;
-  scrollbar-width: thin; 
-  scrollbar-color: #ffb347 #23233b; 
+  display: flex;           
+  flex-direction: column;  
+  overflow-y: auto;        
+  overflow-x: hidden;      
+  max-height: none;        
 }
 
 .chatMessages::-webkit-scrollbar {
@@ -71,6 +73,10 @@
   border-radius: 8px;
   font-size: 0.9rem;
   line-height: 1.4;
+  white-space: pre-wrap;      
+  word-break: break-word;     
+  overflow-wrap: break-word;  
+  max-width: 100%;            
 }
 
 .userMessage {
@@ -141,11 +147,12 @@
 /* Mobile (360px to 480px) */
 @media (max-width: 480px) {
   .chatWindow {
-    width: 95%;
-    max-height: 60%;
-    bottom: 5px;
-    right: 2.5%;
-    border-radius: 8px;
+    width: 100%;       
+    height: 90vh;      
+    max-height: none;  
+    bottom: 0;         
+    right: 0;          
+    border-radius: 0;  
   }
 
   .chatHeader {
@@ -155,11 +162,13 @@
 
   .chatMessages {
     padding: 0.8rem;
+    overflow-x: hidden;       
   }
 
   .message {
-    font-size: 0.8rem;
+    font-size: 0.8rem;        
     padding: 0.5rem 0.7rem;
+    line-height: 1.3;         
   }
 
   .chatInput {

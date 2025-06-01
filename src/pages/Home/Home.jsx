@@ -49,23 +49,25 @@ const Home = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className={styles.searchInput}
         />
-        <select
-          value={sortCriteria}
-          onChange={(e) => setSortCriteria(e.target.value)}
-          className={styles.sortSelect}
-        >
-          <option value="semimajorAxis">Orbital Radius</option>
-          <option value="gravity">Gravity</option>
-          <option value="sideralOrbit">Orbital Period</option>
-        </select>
-        <select
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value)}
-          className={styles.sortSelect}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
+        <div className={styles.sortContainer}>
+          <select
+            value={sortCriteria}
+            onChange={(e) => setSortCriteria(e.target.value)}
+            className={styles.sortSelect}
+          >
+            <option value="semimajorAxis">Orbital Radius</option>
+            <option value="gravity">Gravity</option>
+            <option value="sideralOrbit">Orbital Period</option>
+          </select>
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className={styles.sortSelect}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
       </div>
       <div className={styles.planetList}>
         {filteredPlanets.length > 0 ? (
