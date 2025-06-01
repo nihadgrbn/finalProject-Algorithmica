@@ -3,8 +3,13 @@ import styles from "./Gallery.module.css";
 
 const Gallery = () => {
   const [gallery, setGallery] = useState(() => {
-    const savedGallery = localStorage.getItem("nasaGallery");
-    return savedGallery ? JSON.parse(savedGallery) : [];
+    try {
+      const savedGallery = localStorage.getItem("nasaGallery");
+      return savedGallery ? JSON.parse(savedGallery) : [];
+    } catch (error) {
+      console.error("Error reading from localStorage:", error);
+      return [];
+    }
   });
   const [modalImg, setModalImg] = useState(null);
   const [searchName, setSearchName] = useState("");
@@ -13,9 +18,13 @@ const Gallery = () => {
   const [sortOrder, setSortOrder] = useState("asc"); 
 
   const handleDelete = (index) => {
-    const updatedGallery = gallery.filter((_, i) => i !== index);
-    setGallery(updatedGallery);
-    localStorage.setItem("nasaGallery", JSON.stringify(updatedGallery));
+    try {
+      const updatedGallery = gallery.filter((_, i) => i !== index);
+      setGallery(updatedGallery);
+      localStorage.setItem("nasaGallery", JSON.stringify(updatedGallery));
+    } catch (error) {
+      console.error("Error writing to localStorage:", error);
+    }
   };
 
   const filteredGallery = gallery
