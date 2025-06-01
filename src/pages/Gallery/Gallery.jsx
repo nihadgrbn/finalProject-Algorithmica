@@ -12,6 +12,7 @@ const Gallery = () => {
     }
   });
   const [modalImg, setModalImg] = useState(null);
+  
   const [searchName, setSearchName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -29,7 +30,7 @@ const Gallery = () => {
 
   const filteredGallery = gallery
     .filter((item) => {
-      const matchesName = item.name.toLowerCase().includes(searchName.toLowerCase());
+      const matchesName = item.name && item.name.toLowerCase().includes(searchName.toLowerCase());
       const matchesDate =
         (!startDate || new Date(item.dateAdded) >= new Date(startDate)) &&
         (!endDate || new Date(item.dateAdded) <= new Date(endDate));
