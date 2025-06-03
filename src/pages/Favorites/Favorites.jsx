@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import PlanetCard from "../../components/PlanetCard";
 import styles from "./Favorites.module.css"; 
-import axios from "axios";
 
 const Favorites = () => {
   const [planets, setPlanets] = useState([]);
@@ -11,16 +10,18 @@ const Favorites = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavoriteIds(favorites);
 
-    axios
-      .get("https://api.le-systeme-solaire.net/rest/bodies/")
-      .then((res) => {
-        const onlyPlanets = res.data.bodies.filter((body) => body.isPlanet);
-        const favPlanets = onlyPlanets.filter((planet) =>
-          favorites.includes(planet.id)
-        );
+    async function fetchPlanets() {
+      try {
+        const res = await fetch("https://api.le-systeme-solaire.net/rest/bodies/");
+        const data = await res.json();
+        const onlyPlanets = data.bodies.filter((body) => body.isPlanet);
+        const favPlanets = onlyPlanets.filter((planet) => favorites.includes(planet.id));
         setPlanets(favPlanets);
-      })
-      .catch((err) => console.error("Error loading favorites:", err));
+      } catch (err) {
+        console.error("Error loading favorites:", err);
+      }
+    }
+    fetchPlanets();
   }, []);
 
   const handleRemove = (id) => {
