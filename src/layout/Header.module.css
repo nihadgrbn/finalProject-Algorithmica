@@ -7,8 +7,9 @@
   padding: 22px 48px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.13);
   border-bottom: 2px solid #ffb30033;
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header h1 {
